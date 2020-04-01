@@ -121,7 +121,7 @@ on it. *avg\_max\_sentiment* here was created to:
 
     p
 
-![](http://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/char_sentiment_season_graph-1.png)
+![](https://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/char_sentiment_season_graph-1.png)
 
 
 Overall this comes pretty close to the chart created by pudding.cool -
@@ -138,7 +138,7 @@ plotly as per the below:
              height = 700) %>%
       style(textposition="right")
 
-<iframe width="1000" height="750" src="http://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/animated_char_sentiment.html" scrolling="no"></iframe>
+<iframe width="1000" height="750" src="https://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/animated_char_sentiment.html" scrolling="no"></iframe>
 
 There are plenty of issues here that need solving, however, for the sake
 of this exercise I’ve left it where it was (especially as ggplotly
@@ -151,7 +151,7 @@ favourites.
 
 ### EDA
 
-![](http://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/top20_episodes_office-1.png)
+![](https://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/top20_episodes_office-1.png)
 
 To me it’s quite interesting that there are high rated episodes in a
 variety of seasons. The only two seasons that don’t seem to feature in
@@ -160,7 +160,7 @@ read on metacritic, weren’t as well received as a whole anyway). Season
 7 is at the top with 4 top rated episodes. Now that we’ve done the best,
 it would be interesting to see if Season 1 and 8 appear in the worst…
 
-![](http://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/bottom20_episodes_office-1.png)
+![](https://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/bottom20_episodes_office-1.png)
 
 Season 8 and 9 both have a high share on this list. What stands out to
 me as well is that the Pilot is one of the lower rated episodes but
@@ -169,7 +169,7 @@ themselves is interesting, they definitely don’t tell the whole story.
 Let’s create a line graph so we can get an idea of how each season
 performed and what their best / worst episodes were.
 
-![](http://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/office_rating_by_episode_annotated-1.png)
+![](https://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/office_rating_by_episode_annotated-1.png)
 
 There’s a lot going on here but it does immediately give an idea of how
 the series did throughout its lifetime. My immediate questions would be
@@ -259,7 +259,7 @@ In the below chunk, I:
                   angle = label_data$angle, 
                   inherit.aes = FALSE ) 
 
-![](http://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/office_ratings_circular_bar-1.png)
+![](https://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/office_ratings_circular_bar-1.png)
 
 The graph itself would perhaps not really work in the real world as it’s
 quite hard to see general trend. That said, it’s quite good tos ee the
@@ -268,7 +268,7 @@ main struggle with circular bar plot, for me, is getting the angle right
 but the article linked was quite helpful. We did episode-specific so I
 quickly wanted to a *facet* of seasons too, to show the drops.
 
-![](http://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/office_ratings_through_seasons-1.png)
+![](https://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/office_ratings_through_seasons-1.png)
 
 Important to note that Season 1 had fewer episodes which is why the line
 is much shorter. Using the average, we can see that season 1 barely
@@ -293,7 +293,7 @@ highest average rating.
            title = "Which character in The Office has the highest average episode rating?",
            subtitle = "Size represents number of episodes featured")
 
-![](http://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/char_lines_rating-1.png)
+![](https://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/char_lines_rating-1.png)
 
 Turns out that Charles, who is only in 7 episodes, has the highest
 average rating. After having a look at who he is, it’s a character
@@ -312,7 +312,7 @@ So, what are the most commonly used words in The Office?
       geom_col() +
       coord_flip()
 
-![](http://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/office_common_words-1.png)
+![](https://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/office_common_words-1.png)
 
 So apparently characters really like saying each other’s name which
 isn’t that surprising in an office environment. To round it off, a quick
@@ -332,4 +332,4 @@ most commonly used word is, apparently, “love”.
       comparison.cloud(colors=c("#F8766D", "#00BFC4"), 
                        max.words=200)
 
-![](http://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/office_word_cloud-1.png)
+![](https://www.duncanpastoors.com/blog/2020/the_office_files/figure-markdown_strict/office_word_cloud-1.png)
