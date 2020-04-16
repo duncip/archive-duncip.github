@@ -12,37 +12,36 @@ description: Notes on all of the chapters in the Wrangle section of R4DS book
         -   [Exercises](#exercises)
     -   [Chapter 11 - Data import](#chapter-11---data-import)
         -   [Exercises](#exercises-1)
-        -   [Chapter 12 - Tidy data](#chapter-12---tidy-data)
-        -   [12.3 Pivoting](#pivoting)
-        -   [12.4 Separating and Uniting](#separating-and-uniting)
-        -   [12.5 Missing values](#missing-values)
+    -   [Chapter 12 - Tidy data](#chapter-12---tidy-data)
+        -   [Exercises](#exercises-2)
+        -   [Pivoting](#pivoting)
+        -   [Separating and Uniting](#separating-and-uniting)
+        -   [Missing values](#missing-values)
         -   [Case Study](#case-study)
-    -   [13 Relational Data](#relational-data)
-        -   [Exercises](#exercises-6)
-        -   [13.3 Keys](#keys)
-        -   [13.4 Mutating Joins](#mutating-joins)
-        -   [13.5 Filtering Joins](#filtering-joins)
-    -   [14 Strings](#strings)
-        -   [14.2.3 Subsetting strings](#subsetting-strings)
-        -   [14.2.4 Locales](#locales)
--   [COME BACK TO THIS AFTER FUNCTION
-    CHAPTER](#come-back-to-this-after-function-chapter)
-    -   [14.3 Matching patterns with regular
-        expressions](#matching-patterns-with-regular-expressions)
-    -   [14.4 Tools](#tools)
-    -   [14.5 Other Types of pattern](#other-types-of-pattern)
-    -   [14.6 Other uses of regular
-        expressions](#other-uses-of-regular-expressions)
-    -   [14.7 Stringi](#stringi)
-    -   [15 Factors](#factors)
-        -   [Exercises](#exercises-22)
-        -   [15.4 Modifying factor order](#modifying-factor-order)
-        -   [15.5 Modifying factor levels](#modifying-factor-levels)
-    -   [16 Dates and Times](#dates-and-times)
-        -   [16.2.3 From other types](#from-other-types)
-        -   [16.3 Date-time components](#date-time-components)
-        -   [16.4 Time spans](#time-spans)
-        -   [16.5 Time zones](#time-zones)
+    -   [Chapter 13 - Relational Data](#chapter-13---relational-data)
+        -   [Exercises](#exercises-7)
+        -   [Keys](#keys)
+        -   [Mutating Joins](#mutating-joins)
+        -   [Filtering Joins](#filtering-joins)
+    -   [Chapter 14 - Strings](#chapter-14---strings)
+        -   [Subsetting strings](#subsetting-strings)
+        -   [Locales](#locales)
+        -   [Matching patterns with regular
+            expressions](#matching-patterns-with-regular-expressions)
+        -   [Tools](#tools)
+        -   [Other Types of pattern](#other-types-of-pattern)
+        -   [Other uses of regular
+            expressions](#other-uses-of-regular-expressions)
+        -   [Stringi](#stringi)
+    -   [Chapter 15 - Factors](#chapter-15---factors)
+        -   [Exercises](#exercises-23)
+        -   [Modifying factor order](#modifying-factor-order)
+        -   [Modifying factor levels](#modifying-factor-levels)
+    -   [Chapter 16 - Dates and Times](#chapter-16---dates-and-times)
+        -   [From other types](#from-other-types)
+        -   [Date-time components](#date-time-components)
+        -   [Time spans](#time-spans)
+        -   [Time zones](#time-zones)
 
 Continuation of the R4DS book - Wrangle
 =======================================
@@ -117,19 +116,19 @@ Chapter 11 - Data import
 
 ##### Exercises
 
-**What function would you use to read a file where fields were separated
-with ‘|’**
+-   What function would you use to read a file where fields were
+    separated with ‘|’
 
 In this case we’d simply use `read_delim(delim="|")`
 
-**Apart from `file`, `skip`, and `comment`, what other arguments do
-`read_csv` and `read_tsv` have in common?**
+-   Apart from `file`, `skip`, and `comment`, what other arguments do
+    `read_csv` and `read_tsv` have in common?
 
 They have the following in common:
 
     union(names(formals(read_csv)), names(formals(read_tsv)))
 
-**What are the most important arguments to `read_fwf`?**
+-   What are the most important arguments to `read_fwf`?
 
 The most important is col\_positions which tells the function where data
 columns are
@@ -155,7 +154,8 @@ In this case we can use the `quote` argument, so
     read_csv("a,b\n1,2\na,b")
     read_csv("a;b\n1;3")                # separated by ';' instead of a comma, should use csv2 instead
 
-### Chapter 12 - Tidy data
+Chapter 12 - Tidy data
+----------------------
 
 There are three interrelated rules which make a dataset tidy:
 
@@ -186,8 +186,8 @@ Some of the things we can do when the data is tidy:
 
 ##### Exercises
 
-**Using prose, describe how variables and observations are organised in
-each of the sample tables**
+-   Using prose, describe how variables and observations are organised
+    in each of the sample tables
 
 In `table1` everything is independent - each variable has its own
 column, each observation has its own row, and each value has its own
@@ -205,16 +205,16 @@ Just a country name, year number and a random number
 
 In `table4b` it’s the same as a except using population instead of cases
 
-**Compute the `rate` for `table2`, and `table4a` + `table4b`. Will need
-to perform 4 operations:**
+-   Compute the `rate` for `table2`, and `table4a` + `table4b`. Will
+    need to perform 4 operations:
 
--   Extract number of TB cases per country per year
+    -   Extract number of TB cases per country per year
 
--   Extract matching population per country per year
+    -   Extract matching population per country per year
 
--   Divide cases by population and multiple by 10000
+    -   Divide cases by population and multiple by 10000
 
--   Store back in appropriate place
+    -   Store back in appropriate place
 
 Which representation is easiest to work with? Which is hardest?
 
@@ -247,7 +247,7 @@ Which representation is easiest to work with? Which is hardest?
 Personally find table2 the easiest because of the spread. Plus, you have
 all the normal variables still there so can perform other operations
 
-1.  Recreate the plot showing change in cases over time using `table2`
+-   Recreate the plot showing change in cases over time using `table2`
     instead of `table1`. What do we need to do?
 
 <!-- -->
@@ -258,7 +258,7 @@ all the normal variables still there so can perform other operations
       geom_line(aes(group = country)) +
       geom_point(aes(colour = country))
 
-### 12.3 Pivoting
+### Pivoting
 
 When dealing with data the first step is always to figure out what the
 variables and observations are. Second step is usually to resolve one of
@@ -288,7 +288,9 @@ instead converts them into a column of their own (cases and population)
 
 ##### Exercises
 
-**Why are `pivot_longer` and `pivot_wider` not perfectly symmetrical?**
+-   Why are `pivot_longer` and `pivot_wider` not perfectly symmetrical?
+
+<!-- -->
 
     stocks <- tibble(
       year   = c(2015, 2015, 2016, 2016),
@@ -302,14 +304,16 @@ instead converts them into a column of their own (cases and population)
 They’re not symmetrical because column type information is lost in the
 operation
 
-**Why does the below code fail?**
+-   Why does the below code fail?
+
+<!-- -->
 
     table4a %>% 
       pivot_longer(c(1999, 2000), names_to = "year", values_to = "cases")
 
 Need to use quotation marks around 1999 and 2000 in this case
 
-1.  Tidy the below tibble - does it need to made longer or wider?
+-   Tidy the below tibble - does it need to made longer or wider?
 
 <!-- -->
 
@@ -322,7 +326,7 @@ Need to use quotation marks around 1999 and 2000 in this case
     preg %>%
       pivot_longer(c(male, female), names_to = "gender")
 
-### 12.4 Separating and Uniting
+### Separating and Uniting
 
 **Separate**
 
@@ -366,7 +370,7 @@ want to avoid that we use `sep`
     table5 %>%
       unite(new, century, year, sep = "")
 
-**Exercises**
+##### Exercises
 
 -   What do the `extra` and `fill` arguments do in `separate()`?
     Experiment with the various options for the following two toy
@@ -450,7 +454,7 @@ also a lot more flexible. `extract` uses a similar structure to
     ## 3 AA       11   
     ## 4 AA       2
 
-### 12.5 Missing values
+### Missing values
 
 A value can be missing in two ways:
 
@@ -698,8 +702,8 @@ not important in this case.
                  colour = sex)) +
       geom_line()
 
-13 Relational Data
-------------------
+Chapter 13 - Relational Data
+----------------------------
 
 Relational data is what it’s called when you use more than a single
 table of data, which is usually the case with more complicated analysis.
@@ -759,7 +763,7 @@ the date keys to join it onto other tables:
       2013, 11, 29, "Thanksgiving Day"
     )
 
-### 13.3 Keys
+### Keys
 
 The variables we use to connect tables are called **keys**. There are
 two types:
@@ -817,7 +821,7 @@ For `atmos` we can use (`lat`, `long`, `year`, `month`)
 There is no primary key in `diamonds` because there was duplicate
 values, can calculate this using `distinct` and pipe into `nrow()`
 
-### 13.4 Mutating Joins
+### Mutating Joins
 
 Just like with mutate, join functions add variables to the right. We can
 use a `left_join` to join two sets together:
@@ -962,13 +966,13 @@ storms, that caused massive disruption to flights. Can read more about
 it
 [here](https://en.wikipedia.org/wiki/June_12%E2%80%9313,_2013_derecho_series)
 
-#### 13.4.7 Other implementations
+#### Other implementations
 
 We can also use `merge` instead of any of the joins but joins are
 preferred as they more clearly convey intent of code. A `merge` example
 for a `left_join` would be `merge(x, y, all.x = TRUE)`
 
-### 13.5 Filtering Joins
+### Filtering Joins
 
 Filtering joins match observations in the same way as mutating joins but
 affect the observations instead of the variables. We can use two
@@ -1083,7 +1087,7 @@ bust and then go on to sell their planes. As a result we can’t trust
 there to be an implicit relationship between the two as for many, that
 is simply not the case.
 
-#### 13.6 Join Problems
+#### Join Problems
 
 When working with own data it’s very unlikely it’s already been tidied
 up. It’s important to keep a few things in mind to make it as easy as
@@ -1100,7 +1104,7 @@ possible to perform joins:
     way to do this is to use an `anti_join`. Common for keys not to
     match because of data entry problems.
 
-#### 13.7 Set Operations
+#### Set Operations
 
 These aren’t used as often but are helpful when breaking up a complex
 filter into simpler pieces. All these operations work with a complete
@@ -1129,8 +1133,8 @@ row, comparing the value of every variable. We have:
     union(df1, df2)
     setdiff(df2, df1)
 
-14 Strings
-----------
+Chapter 14 - Strings
+--------------------
 
 This section is mainly focused on Regular Expressions when it comes to
 analysing strings and manipulating filters.
@@ -1172,7 +1176,7 @@ advantage with an IF statement
 
     ## [1] "Good morning Duncan and HAPPY BIRTHDAY."
 
-#### 14.2.3 Subsetting strings
+#### Subsetting strings
 
 We can also take parts of a string by subsetting it with a parameter.
 For example, if we just want the first 4 digits of everything in a list.
@@ -1183,7 +1187,7 @@ sometimes to use with `str_to_upper` or lower
 
     str_sub(x, 1, 1) <- str_to_lower(str_sub(x, 1, 1))
 
-#### 14.2.4 Locales
+#### Locales
 
 Because different languages have different rules for capitalisation, R
 offers locales that you can change easily by specifying the `locale`
@@ -1253,10 +1257,9 @@ repeated whitespace inside a string. To do the opposite of trim we use
     the string a, b, and c. Think carefully about what it should do if
     given a vector of length 0, 1, or 2.
 
-COME BACK TO THIS AFTER FUNCTION CHAPTER
-========================================
+##### COME BACK TO THIS AFTER FUNCTION CHAPTER
 
-### 14.3 Matching patterns with regular expressions
+### Matching patterns with regular expressions
 
 For regular expressions we’ll use `str_view` and `str_view_all`, both of
 which take a character vector and a regex. We can also use `str_subset`
@@ -1322,7 +1325,7 @@ We would use `str_view(h, "\"\'\\\\")`
 
 This would be `.`\[x\]`.`\[x\]`.`\[x\]
 
-#### 14.3.2 Anchors
+#### Anchors
 
 Anchors are defined as the `^` and `$` characters. We can also use the
 boundary between words with `\b` for example, `\bsum\b` will only match
@@ -1354,7 +1357,7 @@ str\_view() to show only the matching or non-matching words.
     str_view(words, "^...$", match = TRUE)
     str_view(words, "^.......", match = TRUE)
 
-#### 14.3.3 Character classes and alternatives
+#### Character classes and alternatives
 
 These are special patterns that match more than one character, `.` is
 one of them and things like `\d` are examples of others (see list
@@ -1410,7 +1413,7 @@ said, we’d use “ou” instead of “o”, “ae” and “oe” instead of �
 
     str_subset(words, "ou|ae|oe|ise$|yse$")
 
-#### 14.3.4 Repetition
+#### Repetition
 
 We can also control the amount of times the character appears with `?`,
 `+` and `*`
@@ -1477,7 +1480,7 @@ digits. In other words will match data format.
 -   Solve the beginner regexp crosswords at
     <a href="https://regexcrossword.com/challenges/beginner" class="uri">https://regexcrossword.com/challenges/beginner</a>.
 
-#### 14.3.5 Grouping and back references
+#### Grouping and back references
 
 Parantheses aren’t just a way to make complex expressions easier to
 read, we can also use them to create a numbered capturing group
@@ -1528,7 +1531,7 @@ characters but in reverse order.
     str_subset(words, "([A-Za-z][A-Za-z]).*\\1")
     str_subset(words, "(.).*\\1.*\\1")
 
-### 14.4 Tools
+### Tools
 
 Now that we’ve learnt some basic regular expressions.. this chapter we
 will learn some stringr functions that will let us determine which
@@ -1642,7 +1645,7 @@ We can use the following to avoid it including flickered,
     str_extract(sentences, "\\b[A-Za-z]+ing\\b")
     str_extract(sentences, "\\b[A-Za-z]{3,}s\\b")
 
-#### 14.4.3 Grouped matches
+#### Grouped matches
 
 Where `str_extract` gives us the complete match, `str_match` gives us
 each individual component
@@ -1690,7 +1693,7 @@ this:
       str_extract("([A-Za-z]+)'([A-Za-z]+)") %>%
       str_split("'")
 
-#### 14.4.4 Replacing matches
+#### Replacing matches
 
 To replace matches with new strings we can use `str_replace` and
 `str_replace_all`. This can be helpful with phone numbers or if you need
@@ -1737,7 +1740,7 @@ words this way
     words %>%
       str_replace_all("^([A-Za-z])(.*)([a-z])$", "\\3\\2\\1")
 
-#### 14.4.5 Splitting
+#### Splitting
 
 Lastly we can use splitting with `str_split`. Again, we can use the
 `simplify = TRUE` parameter to return a matrix. There’s also an `n`
@@ -1771,14 +1774,14 @@ it splits by letter
       str_split("") %>%
       head(3)
 
-#### 14.4.6 Find matches
+#### Find matches
 
 When we want to find the starting and ending positions of each match we
 use `str_locate` or `str_locate_all`. These are useful when none of the
 other functions do what we want so we can use `str_locate` to find the
 matching pattern and then `str_sub` to extract / modify them
 
-### 14.5 Other Types of pattern
+### Other Types of pattern
 
 When you use a pattern that’s a string, it’s automatically wrapped into
 a regex. So `str_view(fruit, "nana")` is the same as saying
@@ -1833,7 +1836,7 @@ With `regex` we’d have to use `\\\\` with `fixed` we’d simply do `"\"`
       mutate(word = str_to_lower(word)) %>% 
       count(word, sort = TRUE)
 
-### 14.6 Other uses of regular expressions
+### Other uses of regular expressions
 
 There are two useful functions in Base R that are built on Regex as
 well, `apropos` and `dir`. `apropos` searches all objects available in
@@ -1841,7 +1844,7 @@ the global environment which is useful when you can’t remember the name
 of a function. `dir` lists all the files in a directory. It takes a
 `pattern` parameter like `head(dir(pattern = "\\.Rmd$"))`
 
-### 14.7 Stringi
+### Stringi
 
 Stringr is built on the **stringi** package, Stringr is great to begin
 with because it has a minimal set of functions that have been selected
@@ -1865,8 +1868,8 @@ generate random text
 
     stri_rand_strings
 
-15 Factors
-----------
+Chapter 15 - Factors
+--------------------
 
 We use factors to work with categorical variables - historically,
 factors were easier to work with than characters and so many functions
@@ -1964,7 +1967,7 @@ visually
       geom_point() +
       theme(axis.text.x = element_text(angle = 90, size = 6))
 
-### 15.4 Modifying factor order
+### Modifying factor order
 
 One of the main things we use factors for is to reorder levels in a
 visualisation. For example, the bar plot above can be confusing as it’s
@@ -2062,7 +2065,7 @@ status which we can order arbitrarily.
 Because being at the top gives “Not applicable” an integer level of 1,
 meaning ggplot plots it first
 
-### 15.5 Modifying factor levels
+### Modifying factor levels
 
 Even though changing the order is great especially when plotting, one of
 the most powerful things we can do is changing the values. This allows
@@ -2171,8 +2174,8 @@ think it’s more to do with amount of voters in later years.
       geom_bar() +
       coord_flip()
 
-16 Dates and Times
-------------------
+Chapter 16 - Dates and Times
+----------------------------
 
 Working with dates is usually done with the package `lubridate` which
 isn’t part of the tidyverse. Should try and avoid date-time where
@@ -2228,7 +2231,7 @@ We can also do it in a single day
       ggplot(aes(x = dep_time)) +
       geom_freqpoly(binwidth = 600) # 600 s = 10 mins
 
-#### 16.2.3 From other types
+#### From other types
 
 If we want to switch between a date-time and date, we can use
 `as_datetime()` or `as_date()`
@@ -2263,7 +2266,7 @@ timezone.
     mdy(d4)
     mdy(d5)
 
-### 16.3 Date-time components
+### Date-time components
 
 We can also pull out individual parts of the date with different
 accessor functions like `year`, `month`, `mday` (day of month), `yday`,
@@ -2326,7 +2329,7 @@ what unit we want to scale
       ggplot(aes(week, n)) +
       geom_line()
 
-#### 16.3.3 Setting components
+#### Setting components
 
 We can also use each accessor function listed above to set the values.
 If we want to edit multiple values at once we can use `update`. If
@@ -2483,7 +2486,7 @@ the graph the hypothesis can’t be rejected.
       ggplot(aes(minute, early)) +
       geom_line()
 
-### 16.4 Time spans
+### Time spans
 
 There are three classes that fall under time spans:
 
@@ -2521,7 +2524,7 @@ We can also add and subtract durations to and from days
     today() + ddays(1) # tomorrow
     wday(today() - dyears(1), label = TRUE) # last year
 
-#### 16.4.2 Periods
+#### Periods
 
 As durations represent an exact number of seconds we can sometimes run
 into unexpected results, mainly because of timezones. To solve this
@@ -2567,7 +2570,7 @@ arrived the following day. Can fix this by adding `days(1)`
     flights_dt %>% 
       filter(overnight, arr_time < dep_time)
 
-#### 16.4.3 Intervals
+#### Intervals
 
 When it comes to things like leap years there’s not always enough info
 for lubridate to give a clear answer. If we do want to have an accurate
@@ -2581,7 +2584,7 @@ determine exactly how long it is.
     # to find out how many periods fall into an interval, have to use integer division
     (today() %--% next_year) %/% days(1)
 
-#### 16.4.4 Summary
+#### Summary
 
 How do we pick between durations, periods, and intervals? Should pick
 the simplest that solves our problem. If we care about physical time -
@@ -2638,7 +2641,7 @@ Because of the answer to question 1 - a month isn’t clearly defined. Are
 we dividing by 31, 30 or 28? To find months within an interval we’ll
 have to use `%/%`instead of `/`
 
-### 16.5 Time zones
+### Time zones
 
 Time zones are very complicated because of their interaction with
 geopolitical entities. They’re not all that important for data analysis
