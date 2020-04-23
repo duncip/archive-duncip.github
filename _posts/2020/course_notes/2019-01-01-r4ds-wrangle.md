@@ -83,17 +83,13 @@ expand that however, there is a way
 
 ##### Exercises
 
--   How can you tell if object is a tibble?
-
-<!-- -->
+> How can you tell if object is a tibble?
 
     # Tibble or Dataframe?
     str(mtcars)
     ## Tibble print-out is much shorter and it says it's a tibble. Can also use str to determine.
 
--   Compare and contrast following operations - what is different?
-
-<!-- -->
+> Compare and contrast following operations - what is different?
 
     df <- data.frame(abc = 1, xyz = "a")
     df$x
@@ -101,10 +97,8 @@ expand that however, there is a way
     df[, c("abc", "xyz")]#
     # The operations aren't informative at all. Just returns one value
 
--   If you have the name of a variable stored in an object, how can you
-    extract the reference variable from a tibble?
-
-<!-- -->
+> If you have the name of a variable stored in an object, how can you
+> extract the reference variable from a tibble?
 
     var <- "mpg"
 
@@ -1257,7 +1251,23 @@ repeated whitespace inside a string. To do the opposite of trim we use
     the string a, b, and c. Think carefully about what it should do if
     given a vector of length 0, 1, or 2.
 
-##### COME BACK TO THIS AFTER FUNCTION CHAPTER
+<!-- -->
+
+    x <- c("a", "b", "c")
+    y <- c("a")
+
+    length()
+
+    stringify_vector <- function(x) {
+      stopifnot(length(x) >= 1)
+      paste(x, collapse = ", ")
+    }
+
+    stringify_vector(x)
+    stringify_vector(y)
+    stringify_vector("")
+
+    length("")
 
 ### Matching patterns with regular expressions
 

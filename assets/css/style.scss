@@ -2,9 +2,30 @@
 ---
 // Custom Font
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans");
 
 body {
     font-family: "Roboto", sans-serif !important;
   }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "PT Sans", sans-serif !important;
+  padding-bottom: 0.3em;
+}
+
+h1, h2, h3, h5 {
+  padding-top: 1em;
+  font-weight: 800;
+}
+
+p {
+  font-size: 0.9em;
+}
+
+.highlight {
+  padding: 0.5em 0 0.5em 0;
+}
+
+
 
 @import "portfolYOU";
