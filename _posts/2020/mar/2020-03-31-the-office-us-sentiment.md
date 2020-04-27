@@ -3,8 +3,8 @@ title: How negative are the characters in The Office (US)
 tags: [sentiment, r, eda]
 style: fill
 color: info # primary / secondary / success / danger / warning / info / light / dark (choose one only)
-
 description: Sentiment analysis and general EDA of The Office (US) data
+visible: 1
 ---
 
 

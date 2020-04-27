@@ -4,6 +4,7 @@ tags: [r, course]
 style: none
 # primary / secondary / success / danger / warning / info / light / dark (choose one only)
 description: Notes on all of the chapters in the Wrangle section of R4DS book
+visible: 0
 ---
 
 -   [Continuation of the R4DS book -
