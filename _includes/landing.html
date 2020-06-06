@@ -1,17 +1,24 @@
-<div class="container">
-  <div class="col-lg-10 mx-auto mt-5 text-justify">
-    <h3 class="main-cta">Recent posts</h3>
+<div class="container-fluid">
+  <div class="flex-shrink-0 container mt-5">
+    <div class="col-lg-10 mx-auto mt-5 post">
+      <h3 class="main-cta">My study notes on R</h3>
 
-    <ul class="hp-blogs">
-      {% for post in site.posts limit:4%}
-      {% if post.visible == 1 %}
-      <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
-      </li>
-      <p>{{ post.date | date_to_long_string }}</p>
-      
-      {% endif %}
-      {% endfor %}
-    </ul>
+      <ul class="hp-blogs">
+        {% for post in site.posts limit:4%}
+        {% if post.visible == 1 %}
+        <li>
+          <a href="{{ post.url }}"><h2>{{ post.title }}</h2></a>
+        </li>
+        <p>{{ post.date | date_to_long_string }}</p>
+        
+        {% endif %}
+        {% endfor %}
+      </ul>
+
+
+
+
+
+    </div>
   </div>
 </div>

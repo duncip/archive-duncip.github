@@ -40,14 +40,25 @@ p {
 
 .hp-blogs li {
   list-style-type: none;
+  text-decoration: none;
+
+}
+
+.hp-blogs li:hover {
+  color: inherit;
 
 }
 
 .hp-blogs a {
   color: black;
-  font-size: 2.5em;
+ // font-size: 2.5em;
   text-align: left;
   font-weight: bold;
+  text-decoration: none;
+}
+
+.hp-blogs a:hover {
+  color: inherit;
 }
 
 @import "portfolYOU";
